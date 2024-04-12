@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-RUN apt-get update && apt-get install -y curl && apt-get clean
+RUN apt-get update && apt-get upgrade && apt-get install -y curl && apt-get -y gnupg2 && apt-get clean
 
 RUN curl -sSLfo ./zrok-install.bash https://get.openziti.io/install.bash
 
