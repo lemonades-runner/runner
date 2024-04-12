@@ -1,11 +1,10 @@
 FROM python:3.10-slim
 
-RUN apt-get update && \
-    apt-get upgrade && \
-    apt-get install curl -y && \
-    curl -sSLfo ./zrok-install.bash https://get.openziti.io/install.bash && \
-    bash ./zrok-install.bash zrok && \
-    apt-get clean
+RUN apt-get update && apt-get install -y curl && apt-get clean
+
+RUN curl -sSLfo ./zrok-install.bash https://get.openziti.io/install.bash
+
+RUN bash ./zrok-install.bash zrok
 
 COPY main.py .
 
