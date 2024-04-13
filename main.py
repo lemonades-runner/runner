@@ -15,12 +15,15 @@ def publication_is_ready(attempts: int = 10):
     :return: is_ready: bool
     """
     for i in range(attempts):
-        if requests.get(f'{DEPLOYMENT_URL}/healthz').status_code == 200:
-            print('Deployment available.')
-            return True
-        print(f'Deployment unavailable. Attempt {i + 1}.')
+        try:
+            if requests.get(f'{DEPLOYMENT_URL}/healthz').status_code == 200:
+                print('Deployment available.')
+                return True
+        except Exception as e:
+            print(e)
+        print(f'Deployment unavailable. Attempt: {i + 1}/{attempts}.')
         time.sleep(3)
-    print('Deployment unavailable.')
+    print('Deployment unavailable. No more attempts.')
     return False
 
 
