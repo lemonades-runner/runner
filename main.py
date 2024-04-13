@@ -34,8 +34,8 @@ def publication_setup():
     """
     # Enable zrok environment
     subprocess.run(['zrok', 'enable', ZROK_TOKEN, '-d', UPSTREAM_NAME])
-    # Reserve a domain name
-    subprocess.run(['zrok', 'reserve', 'public', DEPLOYMENT_URL, '-n', UPSTREAM_NAME])
+    # Reserve a domain name (maybe to load json output one day)
+    subprocess.run(['zrok', 'reserve', 'public', DEPLOYMENT_URL, '-n', UPSTREAM_NAME, '-j'])
 
 
 def publication_publish():
@@ -44,7 +44,7 @@ def publication_publish():
     :return:
     """
     # Share the upstream
-    subprocess.run(['zrok', 'share', 'reserved', UPSTREAM_NAME])
+    subprocess.Popen(['zrok', 'share', 'reserved', UPSTREAM_NAME, '--headless'])
 
 
 def main():
