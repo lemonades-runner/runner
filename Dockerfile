@@ -6,6 +6,8 @@ RUN curl -sSLfo ./zrok-install.bash https://get.openziti.io/install.bash
 
 RUN bash ./zrok-install.bash zrok
 
-COPY main.py .
+COPY . .
+
+RUN python3 -m pip install -r requirements.txt --no-cache-dir
 
 CMD ["python3", "-m", "main"]
