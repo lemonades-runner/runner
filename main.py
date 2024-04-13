@@ -35,7 +35,7 @@ def publication_setup():
     # Enable zrok environment
     subprocess.run(['zrok', 'enable', ZROK_TOKEN, '-d', UPSTREAM_NAME])
     # Reserve a domain name
-    subprocess.run(['zrok', 'reserve', 'public', DEPLOYMENT_URL, '-n', UPSTREAM_NAME, '--insecure'])
+    subprocess.run(['zrok', 'reserve', 'public', DEPLOYMENT_URL, '-n', UPSTREAM_NAME])
 
 
 def publication_publish():
