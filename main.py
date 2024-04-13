@@ -44,7 +44,8 @@ def publication_publish():
     :return:
     """
     # Share the upstream
-    subprocess.Popen(['zrok', 'share', 'reserved', UPSTREAM_NAME, '--headless'])
+    res = subprocess.Popen(['zrok', 'share', 'reserved', UPSTREAM_NAME, '--headless'])
+    res.wait()
 
 
 def main():
